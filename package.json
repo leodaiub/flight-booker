@@ -31,6 +31,7 @@
     "i18next-browser-languagedetector": "6.0.1",
     "i18next-scanner": "2.11.0",
     "jest-styled-components": "7.0.3",
+    "json-server": "0.16.3",
     "lint-staged": "10.3.0",
     "node-plop": "0.26.2",
     "plop": "2.7.4",
@@ -73,7 +74,8 @@
     "lint:css": "stylelint src/**/*.css",
     "generate": "cross-env TS_NODE_PROJECT='./internals/ts-node.tsconfig.json' plop --plopfile internals/generators/plopfile.ts",
     "prettify": "prettier --write",
-    "extract-messages": "i18next-scanner --config=internals/extractMessages/i18next-scanner.config.js"
+    "extract-messages": "i18next-scanner --config=internals/extractMessages/i18next-scanner.config.js",
+    "api": "json-server --watch db.json --port 3001"
   },
   "browserslist": {
     "production": [
