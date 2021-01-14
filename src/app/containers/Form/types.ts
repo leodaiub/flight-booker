@@ -13,6 +13,8 @@ export interface FormState {
   passportDate: string;
   passportLocation: string;
   acceptTandC: boolean;
+  loading: boolean;
+  error: string;
 }
 
 export type ContainerState = FormState;

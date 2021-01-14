@@ -17,6 +17,8 @@ export const initialState: ContainerState = {
   passportDate: '',
   passportLocation: '',
   acceptTandC: false,
+  loading: false,
+  error: '',
 };
 
 const formSlice = createSlice({
@@ -24,7 +26,17 @@ const formSlice = createSlice({
   initialState,
   reducers: {
     changeForm(state, action: PayloadAction<any>) {
-      state.birthDate = action.payload;
+      Object.assign(state, action.payload);
+    },
+    checkIn(state, action: PayloadAction<any>) {
+      Object.assign(state, action.payload);
+      state.loading = true;
+    },
+    loading(state, action: PayloadAction<any>) {
+      state.loading = action.payload;
+    },
+    error(state, action: PayloadAction<any>) {
+      state.error = action.payload;
     },
   },
 });

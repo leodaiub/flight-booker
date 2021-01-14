@@ -1,20 +1,19 @@
 import axios from 'axios';
-// import { take, call, put, select, takeLatest } from 'redux-saga/effects';
-// import { formActions } from './slice';
+import { call, put, takeLatest } from 'redux-saga/effects';
+import { formActions } from './slice';
 
-// export function* loadTools({
-//   payload: { page = 0, search = ' ', searchTagsOnly = false },
-// }) {
-//   try {
-//     const tools = yield call(
-//       axios.get,
-//       `tools?skip=${page}&search=${search}&searchTagsOnly=${searchTagsOnly}`,
-//     );
-//     yield put(formActions.toolsLoaded(tools.data));
-//   } catch {
-//     yield put(formActions.toolsError());
-//   }
-// }
+export function* checkIn({ payload }) {
+  try {
+    yield call(
+      axios.post,
+      'https://my-json-server.typicode.com/leodaiub/flight-booker/checkins',
+      payload,
+    );
+    yield put(formActions.loading(false));
+  } catch {
+    yield put(formActions.error('error'));
+  }
+}
 export function* formSaga() {
-  // yield takeLatest(formActions.loadTools, loadTools);
+  yield takeLatest(formActions.checkIn, checkIn);
 }
