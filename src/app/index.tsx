@@ -16,7 +16,7 @@ import { FlightSearch } from './containers/FlightSearch';
 import { NotFoundPage } from './components/NotFoundPage';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Menu } from './components/Menu';
-import { Container, Typography } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { Form } from './containers/Form';
 import { Success } from './components/Success';
 

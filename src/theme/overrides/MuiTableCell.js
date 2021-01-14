@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import palette from '../palette';
 import typography from '../typography';
 
