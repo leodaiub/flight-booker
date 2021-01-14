@@ -1,3 +1,21 @@
 {
-  "flights": [{ "id": 1, "number": "BX1000" }]
+  "flights": [{ "id": 1, "number": "BX1000", "fullName": "Leonardo Daiub" }],
+  "checkins": [
+    {
+      "id": 1,
+      "acceptTandC": false,
+      "birthDate": "11/08/1999",
+      "birthPlace": "Sao Paulo",
+      "email": "leodaiub@gmail.com",
+      "flightNumber": "BX1000",
+      "fullName": "Leonardo Daiub",
+      "nationality": "Brazil",
+      "passportDate": "11/08/2015",
+      "passportExpiry": "11/08/2025",
+      "passportLocation": "Brazil",
+      "passportNumber": "VCX1411",
+      "phoneNumber": "5511955577758",
+      "residence": "Sao Paulo - SP"
+    }
+  ]
 }
