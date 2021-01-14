@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> should render and match the snapshot 1`] = `
+<BrowserRouter>
+  <Helmet
+    defaultTitle="Flight Booker"
+    defer={true}
+    encodeSpecialCharacters={true}
+    htmlAttributes={
+      Object {
+        "lang": undefined,
+      }
+    }
+    titleTemplate="%s - Flight Booker"
+  >
+    <meta
+      content="A Flight Booker application"
+      name="description"
+    />
+  </Helmet>
+  <WithStyles(CssBaseline) />
+  <WithStyles(ForwardRef(Container))
+    maxWidth="md"
+  >
+    <Memo />
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/form"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/success"
+      />
+      <Route
+        component={[Function]}
+      />
+    </Switch>
+  </WithStyles(ForwardRef(Container))>
+  <Memo(GlobalStyleComponent) />
+</BrowserRouter>
+`;
