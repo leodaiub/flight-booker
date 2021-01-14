@@ -14,7 +14,6 @@ import { Brightness7, Brightness4 } from '@material-ui/icons';
 import { changeTheme, selectThemeKey } from 'theme/slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveTheme } from 'theme/utils';
-import { translationsJson } from 'locales/i18n';
 import Menus from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import TranslateIcon from '@material-ui/icons/Translate';
@@ -41,15 +40,6 @@ export const Menu = memo((props: Props) => {
     setAnchorEl(null);
   };
 
-  const [anchorEl1, setAnchorEl1] = React.useState<null | HTMLElement>(null);
-
-  const handleClick1 = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl1(event.currentTarget);
-  };
-
-  const handleClose1 = () => {
-    setAnchorEl1(null);
-  };
   const handleLanguageChange = (data: any) => {
     i18n.changeLanguage(data);
   };
