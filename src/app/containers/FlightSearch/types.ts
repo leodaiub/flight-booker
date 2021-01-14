@@ -1,6 +1,8 @@
 /* --- STATE --- */
 export interface FlightSearchState {
   countries: Country[];
+  flightNumber: string;
+  fullName: string;
   loading: boolean;
   error: any;
 }

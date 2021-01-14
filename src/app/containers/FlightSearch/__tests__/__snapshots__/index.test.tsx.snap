@@ -26,8 +26,6 @@ exports[`<FlightSearch /> should match the snapshot 1`] = `
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-filled"
             data-shrink="false"
-            for="filled-basic"
-            id="filled-basic-label"
           >
             Flight Number
           </label>
@@ -37,7 +35,7 @@ exports[`<FlightSearch /> should match the snapshot 1`] = `
             <input
               aria-invalid="false"
               class="MuiInputBase-input MuiFilledInput-input"
-              id="filled-basic"
+              name="flightNumber"
               type="text"
               value=""
             />
@@ -53,8 +51,6 @@ exports[`<FlightSearch /> should match the snapshot 1`] = `
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-filled"
             data-shrink="false"
-            for="filled-basic"
-            id="filled-basic-label"
           >
             Full Name
           </label>
@@ -64,7 +60,7 @@ exports[`<FlightSearch /> should match the snapshot 1`] = `
             <input
               aria-invalid="false"
               class="MuiInputBase-input MuiFilledInput-input"
-              id="filled-basic"
+              name="fullName"
               type="text"
               value=""
             />
