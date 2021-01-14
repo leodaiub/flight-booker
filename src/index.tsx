@@ -12,6 +12,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as serviceWorker from 'serviceWorker';
+import { ThemeProvider } from 'theme/ThemeProvider';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 // Use consistent styling
 import 'sanitize.css/sanitize.css';
@@ -28,12 +30,17 @@ import './locales/i18n';
 
 const store = configureAppStore();
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;
+const queryClient = new QueryClient();
 
 ReactDOM.render(
   <Provider store={store}>
     <HelmetProvider>
       <React.StrictMode>
-        <App />
+        <ThemeProvider>
+          <QueryClientProvider client={queryClient}>
+            <App />
+          </QueryClientProvider>
+        </ThemeProvider>
       </React.StrictMode>
     </HelmetProvider>
   </Provider>,
@@ -47,7 +54,4 @@ if (module.hot) {
   });
 }
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.register();
