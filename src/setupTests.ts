@@ -8,3 +8,8 @@ import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 
 import 'jest-styled-components';
+beforeEach(() => {
+  jest.mock('react-i18next', () => ({
+    useTranslation: () => ({ t: (key: string) => key }),
+  }));
+});

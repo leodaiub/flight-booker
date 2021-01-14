@@ -2,6 +2,9 @@
   "name": "flight-booker",
   "version": "0.1.0",
   "private": true,
+  "sideEffects": [
+    "./src/services/app/i18n.js"
+  ],
   "dependencies": {
     "@material-ui/core": "4.11.2",
     "@material-ui/icons": "4.11.2",
@@ -68,7 +71,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --silent --coverage",
     "eject": "react-scripts eject",
     "test:generators": "ts-node --project=./internals/ts-node.tsconfig.json ./internals/testing/test-generators.ts",
     "start:prod": "yarn run build && serve -s build",
