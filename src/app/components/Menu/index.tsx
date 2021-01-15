@@ -74,9 +74,9 @@ export const Menu = memo((props: Props) => {
                 <TranslateIcon fontSize="small" />
               </Box>
               <Typography variant="button">
-                {i18n.language === 'en_US'
+                {i18next.language === 'en_US'
                   ? 'English'
-                  : i18n.language === 'PT_BR'
+                  : i18next.language === 'PT_BR'
                   ? 'Português'
                   : 'Español'}
               </Typography>
