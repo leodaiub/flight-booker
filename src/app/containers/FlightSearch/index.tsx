@@ -22,17 +22,11 @@ interface Props {}
 export function FlightSearch(props: Props) {
   useInjectReducer({ key: sliceKey, reducer: reducer });
   useInjectSaga({ key: sliceKey, saga: flightSearchSaga });
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { register, handleSubmit, errors } = useForm(); // initialize the hook
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const flightSearch = useSelector(selectFlightSearch);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const dispatch = useDispatch();
   let history = useHistory();
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   React.useEffect(() => {
     dispatch(flightSearchActions.loadCountries());
@@ -45,6 +39,7 @@ export function FlightSearch(props: Props) {
       history.push('form');
     } catch (error) {}
   };
+
   return (
     <>
       <Helmet>
@@ -63,18 +58,26 @@ export function FlightSearch(props: Props) {
               <TextField
                 fullWidth
                 name="flightNumber"
-                inputRef={register}
-                label="Flight Number"
+                inputRef={register({ required: true })}
+                label={t('Flight Number')}
                 variant="filled"
+                error={!!errors.flightNumber}
+                defaultValue={flightSearch.flightNumber}
               />
             </Grid>
             <Grid item xs={6} sm={12}>
               <TextField
                 fullWidth
                 name="fullName"
-                inputRef={register}
-                label="Full Name"
+                inputRef={register({
+                  required: true,
+                  pattern: /^[a-zA-Z]{2,40}( [a-zA-Z]{2,40})+$/,
+                })}
+                label={t('Full Name')}
                 variant="filled"
+                error={!!errors.fullName}
+                helperText={!!errors.fullName && 'Name has to be full'}
+                defaultValue={flightSearch.fullName}
               />
             </Grid>
             <Grid item xs={6} sm={12}>

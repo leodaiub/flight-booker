@@ -35,20 +35,16 @@ interface Props {}
 export function Form(props: Props) {
   useInjectReducer({ key: sliceKey, reducer: reducer });
   useInjectSaga({ key: sliceKey, saga: formSaga });
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { register, handleSubmit, errors, control, watch } = useForm(); // initialize the hook
   const [confirm, setConfirm] = React.useState<boolean>(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const form = useSelector(selectForm);
-  const { countries } = useSelector(selectFlightSearch);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { countries, fullName } = useSelector(selectFlightSearch);
   const dispatch = useDispatch();
   const history = useHistory();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const nationality = watch('nationality');
+
   const onSubmit = data => {
-    console.log(data);
     confirm
       ? (() => {
           history.push('/success');
@@ -59,7 +55,7 @@ export function Form(props: Props) {
           dispatch(formActions.changeForm(data));
         })();
   };
-  console.log(nationality === 'AT' || nationality === 'BE');
+
   return (
     <>
       <Helmet>
@@ -67,12 +63,13 @@ export function Form(props: Props) {
         <meta name="description" content="Description of Flight Search" />
       </Helmet>
       <Box mt={4}>
-        <h1>{nationality}</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <Typography variant="h3" align="center">
-                {!confirm ? t('Hi') + ', Mr. Doe!' : 'Review your information'}
+                {!confirm
+                  ? t('Hi') + ', ' + fullName
+                  : t('Review your information')}
               </Typography>
             </Grid>
             <Grid item xs={6}>
@@ -83,7 +80,10 @@ export function Form(props: Props) {
                 variant="filled"
                 name="fullName"
                 inputRef={register({ required: true })}
-                defaultValue={form.fullName}
+                error={!!errors.fullName}
+                defaultValue={
+                  fullName.split(' ').slice(0, -2).join(' ') ?? form.fullName
+                }
               />
             </Grid>
             <Grid item xs={6}>
@@ -94,11 +94,19 @@ export function Form(props: Props) {
                 variant="filled"
                 name="fullName"
                 inputRef={register({ required: true })}
-                defaultValue={form.fullName}
+                defaultValue={
+                  fullName.split(' ').slice(-2).join(' ') ?? form.fullName
+                }
+                error={!!errors.fullName}
               />
             </Grid>
             <Grid item xs={6}>
-              <FormControl variant="filled" fullWidth disabled={confirm}>
+              <FormControl
+                error={!!errors.nationality}
+                variant="filled"
+                fullWidth
+                disabled={confirm}
+              >
                 <InputLabel id="demo-simple-select-filled-label">
                   {t('Nationality')}
                 </InputLabel>
@@ -108,9 +116,6 @@ export function Form(props: Props) {
                       labelId="demo-simple-select-filled-label"
                       id="demo-simple-select-filled"
                     >
-                      {/* <MenuItem value="">
-                    <em> {t('Full Name')}</em>
-                  </MenuItem> */}
                       {countries.map(country => (
                         <MenuItem value={country.alpha2Code}>
                           {country.name}
@@ -119,6 +124,7 @@ export function Form(props: Props) {
                     </Select>
                   }
                   control={control}
+                  rules={{ required: true }}
                   name="nationality"
                   defaultValue={form.nationality}
                 />
@@ -133,6 +139,7 @@ export function Form(props: Props) {
                 inputRef={register({ required: true })}
                 name="email"
                 defaultValue={form.email}
+                error={!!errors.email}
               />
             </Grid>
             <Grid item xs={6}>
@@ -144,6 +151,7 @@ export function Form(props: Props) {
                 inputRef={register({ required: true })}
                 name="phoneNumber"
                 defaultValue={form.phoneNumber}
+                error={!!errors.phoneNumber}
               />
             </Grid>
             <Grid item xs={6}>
@@ -155,6 +163,7 @@ export function Form(props: Props) {
                 inputRef={register({ required: true })}
                 name="passportNumber"
                 defaultValue={form.passportNumber}
+                error={!!errors.passportNumber}
               />
             </Grid>
             {(nationality === 'AT' ||
@@ -162,16 +171,15 @@ export function Form(props: Props) {
               nationality === 'FR' ||
               nationality === 'ES') && (
               <Grid item xs={6}>
-                {console.log(nationality)}
                 <TextField
                   fullWidth
                   disabled={confirm}
                   label={t('Residence')}
                   variant="filled"
-                  helperText={t('country and city and adress')}
                   inputRef={register({ required: true })}
                   name="residence"
                   defaultValue={form.residence}
+                  error={!!errors.residence}
                 />
               </Grid>
             )}
@@ -185,6 +193,7 @@ export function Form(props: Props) {
                   name="passportExpiry"
                   inputRef={register({ required: true })}
                   defaultValue={form.passportExpiry}
+                  error={!!errors.passportExpiry}
                 />
               </Grid>
             )}
@@ -198,6 +207,7 @@ export function Form(props: Props) {
                   name="birthDate"
                   inputRef={register({ required: true })}
                   defaultValue={form.birthDate}
+                  error={!!errors.birthDate}
                 />
               </Grid>
             )}
@@ -211,6 +221,7 @@ export function Form(props: Props) {
                   name="birthPlace"
                   inputRef={register({ required: true })}
                   defaultValue={form.birthPlace}
+                  error={!!errors.birthPlace}
                 />
               </Grid>
             )}
@@ -221,10 +232,10 @@ export function Form(props: Props) {
                   disabled={confirm}
                   label={t('Passport location of issue')}
                   variant="filled"
-                  helperText={t('country and city')}
                   name="passportLocation"
                   inputRef={register({ required: true })}
                   defaultValue={form.passportLocation}
+                  error={!!errors.passportLocation}
                 />
               </Grid>
             )}
