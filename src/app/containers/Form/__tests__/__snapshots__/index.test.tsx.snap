@@ -4,7 +4,6 @@ exports[`<Form /> should match the snapshot 1`] = `
 <div
   class="MuiBox-root MuiBox-root-1"
 >
-  <h1 />
   <form>
     <div
       class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
@@ -15,7 +14,7 @@ exports[`<Form /> should match the snapshot 1`] = `
         <h3
           class="MuiTypography-root MuiTypography-h3 MuiTypography-alignCenter"
         >
-          Hi, Mr. Doe!
+          Hi, 
         </h3>
       </div>
       <div

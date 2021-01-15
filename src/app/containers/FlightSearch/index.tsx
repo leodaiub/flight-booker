@@ -49,7 +49,7 @@ export function FlightSearch(props: Props) {
       <Box mt={4}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={4}>
-            <Grid item xs={6} sm={12}>
+            <Grid item xs={12}>
               <Typography variant="h3" align="center">
                 {t('Welcome to your web check-in')}
               </Typography>
@@ -80,7 +80,7 @@ export function FlightSearch(props: Props) {
                 defaultValue={flightSearch.fullName}
               />
             </Grid>
-            <Grid item xs={6} sm={12}>
+            <Grid item xs={12}>
               <Button
                 type="submit"
                 color="primary"
