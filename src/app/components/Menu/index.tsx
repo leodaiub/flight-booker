@@ -18,6 +18,7 @@ import Menus from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import TranslateIcon from '@material-ui/icons/Translate';
 import { Link as RouterLink } from 'react-router-dom';
+import i18next from 'i18next';
 
 interface Props {}
 export const Menu = memo((props: Props) => {
@@ -41,7 +42,7 @@ export const Menu = memo((props: Props) => {
   };
 
   const handleLanguageChange = (data: any) => {
-    i18n.changeLanguage(data);
+    i18next.changeLanguage(data);
   };
 
   return (
